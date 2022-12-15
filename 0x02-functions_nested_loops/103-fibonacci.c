@@ -1,36 +1,31 @@
 #include <stdio.h>
 
-// Define a function to generate the Fibonacci sequence
-void fibonacci(int *a, int *b)
-{
-    int c = *a + *b;
-    *a = *b;
-    *b = c;
-}
-
+/**
+ * main - finds and prints the sum of the even-valued terms
+ * followed by a new line
+ * Return: Always 0 (Success)
+ */
 int main(void)
 {
-    // Initialize the sum to 0
-    int sum = 0;
+	int i;
+	unsigned long int j, k, next, sum;
 
-    // Initialize the first two terms of the sequence
-    int a = 1, b = 2;
+	j = 1;
+	k = 2;
+	sum = 0;
 
-    // Generate the Fibonacci sequence
-    while (b <= 4000000)
-    {
-        // If the current term is even, add it to the sum
-        if (b % 2 == 0)
-        {
-            sum += b;
-        }
+	for (i = 1; i <= 33; ++i)
+	{
+		if (j < 4000000 && (j % 2) == 0)
+		{
+			sum = sum + j;
+		}
+		next = j + k;
+		j = k;
+		k = next;
+	}
 
-        fibonacci(&a, &b);
-    }
+	printf("%lu\n", sum);
 
-    // Print the sum of the even-valued terms
-    printf("%d\n", sum);
-
-    return 0;
+	return (0);
 }
-
